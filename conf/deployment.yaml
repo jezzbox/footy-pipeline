@@ -1,0 +1,19 @@
+build:
+  no_build: true
+environments:
+  default:
+    workflows:
+      - name: "fixtures-1"
+        existing_cluster_id: "0212-202409-l8e9kbfw"
+        libraries:
+          - jar: "file://out/artifacts/fixtures_jar/fixtures.jar"
+        spark_jar_task:
+          main_class_name: "org.jezzbox.footballpipeline.fixtures.Main"
+          parameters: ["20230214031127"]
+      - name: "teams-1"
+        existing_cluster_id: "0212-202409-l8e9kbfw"
+        libraries:
+          - jar: "file://out/artifacts/teams_jar/teams.jar"
+        spark_jar_task:
+          main_class_name: "org.jezzbox.footballpipeline.teams.Main"
+          parameters: ["20230215051503"]
